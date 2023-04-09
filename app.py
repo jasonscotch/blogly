@@ -14,6 +14,7 @@ db.create_all()
 
 @app.route('/')
 def home():
+    """Redirects user to home page"""
     return redirect('/users')
 
 @app.route('/users')
@@ -24,10 +25,12 @@ def list_users():
 
 @app.route('/users/new')
 def create_user_form():
+    """Displays the New User form to fill out"""
     return render_template('new_user.html')
 
 @app.route('/users/new', methods=['POST'])
 def create_user():
+    """Submits form data to db, creates new user, and redirects back to users page"""
     default = 'https://louisianadirectseafood.com/wp-content/uploads/2017/10/default-img.png'
     
     first_name = request.form['First Name']
@@ -43,16 +46,19 @@ def create_user():
 
 @app.route('/users/<int:user_id>')
 def show_user(user_id):
+    """Displays user details"""
     user=User.query.get_or_404(user_id)
     return render_template('details.html', user=user)
 
 @app.route('/users/<int:user_id>/edit')
 def show_edit_user(user_id):
+    """Shows the edit details form to fill out"""
     user=User.query.get_or_404(user_id)
     return render_template('edit_details.html', user=user)
 
 @app.route('/users/<int:user_id>/edit', methods=['POST'])
 def edit_user(user_id):
+    """Submits updates to user to the db and redirects back to the user details page"""
     default = 'https://louisianadirectseafood.com/wp-content/uploads/2017/10/default-img.png'
     
     user = User.query.get(user_id)

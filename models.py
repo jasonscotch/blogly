@@ -26,5 +26,3 @@ class User(db.Model):
                           server_default=default,
                           default=default)
     
-    # def edit_user(self, first_name=first_name, last_name=last_name, image_url=image_url):
-        
