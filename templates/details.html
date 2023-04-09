@@ -1,0 +1,36 @@
+{%extends 'base.html'%}
+  {%block title%}{{user.first_name}} {{user.last_name}}{%endblock%}
+  
+  {%block content%} 
+  
+  <div class="media" style="height: 200px;">
+    <img class="mw-3 h-100 p-2" src="{{user.image_url}}" alt="Generic placeholder image">
+    <div class="media-body">
+      <h1 class="mt-0">{{user.first_name}} {{user.last_name}}</h1>
+      
+      
+        <div class="row">
+          <div class="col-auto">
+            <form action="/users/{{user.id}}/edit">
+              <button type="submit" class="btn btn-primary">Edit</button>
+            </form>
+          </div>
+          <div class="col-auto.no-gutters">
+            <form action="/users/{{user.id}}/delete">
+              <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
+          </div>
+          <div class="col-10">
+            
+          </div>
+        </div>
+      
+      
+      
+      
+    </div>
+  </div>
+
+  <a href="/users">Go Back</a>
+
+  {%endblock%}
