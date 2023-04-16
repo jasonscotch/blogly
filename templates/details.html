@@ -15,16 +15,27 @@
               <button type="submit" class="btn btn-primary">Edit</button>
             </form>
           </div>
-          <div class="col-auto.no-gutters">
+          <div class="col-auto">
             <form action="/users/{{user.id}}/delete">
               <button type="submit" class="btn btn-danger">Delete</button>
             </form>
           </div>
-          <div class="col-10">
-            
+          <div class="col-10"> 
           </div>
         </div>
-      
+      <br>
+      <h2>Posts</h2>
+      <ul>
+        {% for post in user.posts %}
+        <li>
+          <a href="/posts/{{post.id}}">{{post.title}} </a>
+          <small>on {{post.friendly_date}}</small>
+        </li>
+        {% endfor %}
+      </ul>
+      <form action="/users/{{user.id}}/posts/new">
+        <button type="submit" class="btn btn-primary">Add Post</button>
+      </form>
       
       
       
